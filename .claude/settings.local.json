@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf node_modules package-lock.json package.json)",
+      "Bash(pnpm create:*)",
+      "Bash(cp -a dig-ui-tmp/. dig-ui/)",
+      "Bash(rm -rf dig-ui-tmp)",
+      "Bash(pnpm astro:*)",
+      "Bash(pnpm dlx:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
+}
