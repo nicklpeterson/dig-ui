@@ -8,6 +8,7 @@ export const DNS_SERVERS: DnsServerDef[] = [
     ipv4: "8.8.8.8",
     dohUrl: "https://dns.google/resolve",
     category: "Public",
+
   },
   {
     id: "cloudflare",
@@ -15,6 +16,7 @@ export const DNS_SERVERS: DnsServerDef[] = [
     ipv4: "1.1.1.1",
     dohUrl: "https://cloudflare-dns.com/dns-query",
     category: "Public",
+
   },
   {
     id: "quad9",
@@ -79,6 +81,7 @@ export const DNS_SERVERS: DnsServerDef[] = [
     ipv4: "1.1.1.2",
     dohUrl: "https://security.cloudflare-dns.com/dns-query",
     category: "Filtering",
+
   },
   {
     id: "cloudflare-family",
@@ -86,6 +89,7 @@ export const DNS_SERVERS: DnsServerDef[] = [
     ipv4: "1.1.1.3",
     dohUrl: "https://family.cloudflare-dns.com/dns-query",
     category: "Filtering",
+
   },
   {
     id: "dns0",

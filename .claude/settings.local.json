@@ -18,7 +18,8 @@
       "Bash(npx --yes playwright --version)",
       "Bash(node /tmp/screenshot.mjs)",
       "Read(//private/tmp/**)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm run:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

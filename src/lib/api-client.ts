@@ -58,13 +58,16 @@ function mapQuestions(
 	}));
 }
 
+const DOH_RELAY = "https://doh.crypto.sx/dns-query";
+
 async function fetchDoh(
 	query: DnsQuery,
-	dohUrl: string,
+	serverHost: string,
 ): Promise<DohJsonResponse> {
-	const url = new URL(dohUrl);
+	const url = new URL(DOH_RELAY);
 	url.searchParams.set("name", query.name);
 	url.searchParams.set("type", query.type);
+	url.searchParams.set("server", serverHost);
 	if (query.dnssec) url.searchParams.set("do", "1");
 	if (query.ednsSubnet) url.searchParams.set("edns_client_subnet", query.ednsSubnet);
 
@@ -85,8 +88,9 @@ export async function queryDns(query: DnsQuery): Promise<DnsResponse> {
 		throw new Error(`Unknown server: ${query.server}`);
 	}
 
+	const serverHost = new URL(server.dohUrl).hostname;
 	const start = performance.now();
-	const raw = await fetchDoh(query, server.dohUrl);
+	const raw = await fetchDoh(query, serverHost);
 	const elapsed = Math.round(performance.now() - start);
 
 	return {
