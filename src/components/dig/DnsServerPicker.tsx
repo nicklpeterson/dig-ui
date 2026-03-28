@@ -46,7 +46,7 @@ export function DnsServerPicker({ value, onChange }: DnsServerPickerProps) {
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-72 p-0" align="start">
-        <Command>
+        <Command value={selected ? `${selected.name} ${selected.ipv4 ?? ""}` : undefined}>
           <CommandInput placeholder="Search servers..." />
           <CommandList>
             <CommandEmpty>No server found.</CommandEmpty>
