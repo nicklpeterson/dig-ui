@@ -25,7 +25,7 @@ export function ResultSection({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center gap-2 py-2 text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-150"
+        className="flex w-full items-center gap-2 py-2 text-xs font-medium uppercase tracking-wider text-foreground hover:text-foreground transition-colors duration-150"
       >
         <ChevronRight
           className={cn(
@@ -79,8 +79,8 @@ export function RecordTable({ records }: { records: DnsRecord[] }) {
         <tbody>
           {records.map((r, i) => (
             <tr key={i} className="border-t border-border/50">
-              <td className="pr-6 py-1.5 text-muted-foreground">{r.name}</td>
-              <td className="pr-4 py-1.5 text-muted-foreground">{r.TTL}</td>
+              <td className="pr-6 py-1.5 text-foreground">{r.name}</td>
+              <td className="pr-4 py-1.5 text-foreground">{r.TTL}</td>
               <td className="pr-4 py-1.5">{r.typeName}</td>
               <td className="py-1.5 break-all">{r.data}</td>
             </tr>
