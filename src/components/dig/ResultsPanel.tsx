@@ -71,7 +71,7 @@ function formatRawOutput(response: DnsResponse): string {
 export function ResultsPanel({ response }: ResultsPanelProps) {
   return (
     <Tabs defaultValue="formatted" className="w-full">
-      <TabsList variant="line" className="bg-transparent border-b border-border rounded-none w-full justify-start gap-0 px-0 h-auto">
+      <TabsList variant="line" className="bg-transparent border-b border-border rounded-none w-full md:w-50 justify-start gap-0 px-0 h-auto">
         <TabsTrigger
           value="formatted"
           className="rounded-none border-b-2 border-transparent data-[state=active]:border-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 pb-2 pt-1 text-xs font-medium"
