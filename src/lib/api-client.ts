@@ -1,14 +1,26 @@
+import { getServerById } from "./dns-servers";
 import type {
 	DnsQuery,
-	DnsRecord,
 	DnsQuestion,
+	DnsRecord,
 	DnsResponse,
 } from "./dns-types";
-import { getServerById } from "./dns-servers";
-import { RECORD_TYPE_MAP } from "./record-types";
+import { RECORD_TYPE_BY_NAME, RECORD_TYPE_MAP } from "./record-types";
 
 function typeName(typeNum: number): string {
 	return RECORD_TYPE_MAP.get(typeNum)?.type ?? `TYPE${typeNum}`;
+}
+
+// The DoH relay only understands numeric qtypes; a name like "MX" is silently
+// treated as A, so always send the number.
+function typeNumber(type: string): number {
+	const known = RECORD_TYPE_BY_NAME.get(type.toUpperCase());
+	if (known) return known.value;
+
+	const parsed = Number(type);
+	if (Number.isInteger(parsed) && parsed >= 0 && parsed <= 65535) return parsed;
+
+	throw new Error(`Unknown record type: ${type}`);
 }
 
 interface DohJsonResponse {
@@ -66,10 +78,11 @@ async function fetchDoh(
 ): Promise<DohJsonResponse> {
 	const url = new URL(DOH_RELAY);
 	url.searchParams.set("name", query.name);
-	url.searchParams.set("type", query.type);
+	url.searchParams.set("type", String(typeNumber(query.type)));
 	url.searchParams.set("server", serverHost);
 	if (query.dnssec) url.searchParams.set("do", "1");
-	if (query.ednsSubnet) url.searchParams.set("edns_client_subnet", query.ednsSubnet);
+	if (query.ednsSubnet)
+		url.searchParams.set("edns_client_subnet", query.ednsSubnet);
 
 	const res = await fetch(url.toString(), {
 		headers: { Accept: "application/dns-json" },

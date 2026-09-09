@@ -1,21 +1,26 @@
-import * as React from "react"
-import { Input as InputPrimitive } from "@base-ui/react/input"
+import { Input as InputPrimitive } from "@base-ui/react/input";
+import type * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-function Input({ className, type, style, ...props }: React.ComponentProps<"input">) {
-  return (
-    <InputPrimitive
-      type={type}
-      data-slot="input"
-      className={cn(
-        "flex h-8 w-full border border-input bg-background px-3 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
-      style={{ borderRadius: "var(--radius)", ...style }}
-      {...props}
-    />
-  )
+function Input({
+	className,
+	type,
+	style,
+	...props
+}: React.ComponentProps<"input">) {
+	return (
+		<InputPrimitive
+			type={type}
+			data-slot="input"
+			className={cn(
+				"flex h-8 w-full border border-input bg-background px-3 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+				className,
+			)}
+			style={{ borderRadius: "var(--radius)", ...style }}
+			{...props}
+		/>
+	);
 }
 
-export { Input }
+export { Input };
