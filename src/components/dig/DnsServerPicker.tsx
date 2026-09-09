@@ -16,11 +16,12 @@ import {
 import { DNS_SERVER_CATEGORIES, DNS_SERVERS } from "@/lib/dns-servers";
 
 interface DnsServerPickerProps {
+	id: string;
 	value: string;
 	onChange: (value: string) => void;
 }
 
-export function DnsServerPicker({ value, onChange }: DnsServerPickerProps) {
+export function DnsServerPicker({ id, value, onChange }: DnsServerPickerProps) {
 	const [open, setOpen] = useState(false);
 	const selected = DNS_SERVERS.find((s) => s.id === value);
 
@@ -28,6 +29,7 @@ export function DnsServerPicker({ value, onChange }: DnsServerPickerProps) {
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
 				<button
+					id={id}
 					type="button"
 					className="flex h-12 w-full items-center justify-between border border-input bg-background px-3 text-sm hover:bg-accent transition-colors duration-150"
 					style={{ borderRadius: "var(--radius)" }}

@@ -52,8 +52,11 @@ export function QuestionTable({ questions }: { questions: DnsQuestion[] }) {
 					</tr>
 				</thead>
 				<tbody>
-					{questions.map((q, i) => (
-						<tr key={i} className="border-t border-border/50">
+					{questions.map((q) => (
+						<tr
+							key={`${q.name}/${q.typeName}`}
+							className="border-t border-border/50"
+						>
 							<td className="pr-6 py-1.5">{q.name}</td>
 							<td className="pr-6 py-1.5">{q.typeName}</td>
 						</tr>
@@ -77,8 +80,11 @@ export function RecordTable({ records }: { records: DnsRecord[] }) {
 					</tr>
 				</thead>
 				<tbody>
-					{records.map((r, i) => (
-						<tr key={i} className="border-t border-border/50">
+					{records.map((r) => (
+						<tr
+							key={`${r.name}/${r.typeName}/${r.TTL}/${r.data}`}
+							className="border-t border-border/50"
+						>
 							<td className="pr-6 py-1.5 text-foreground">{r.name}</td>
 							<td className="pr-4 py-1.5 text-foreground">{r.TTL}</td>
 							<td className="pr-4 py-1.5">{r.typeName}</td>

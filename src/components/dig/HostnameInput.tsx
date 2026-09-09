@@ -1,18 +1,21 @@
 import { Input } from "@/components/ui/input";
 
 interface HostnameInputProps {
+	id: string;
 	value: string;
 	onChange: (value: string) => void;
 	onSubmit: () => void;
 }
 
 export function HostnameInput({
+	id,
 	value,
 	onChange,
 	onSubmit,
 }: HostnameInputProps) {
 	return (
 		<Input
+			id={id}
 			type="text"
 			value={value}
 			onChange={(e) => onChange(e.target.value)}

@@ -28,10 +28,14 @@ export function QueryForm({
 	return (
 		<div className="flex flex-col gap-3 lg:flex-row lg:items-end">
 			<div className="flex-1 min-w-0">
-				<label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+				<label
+					htmlFor="dig-hostname"
+					className="text-xs font-medium text-muted-foreground mb-1.5 block"
+				>
 					Hostname
 				</label>
 				<HostnameInput
+					id="dig-hostname"
 					value={name}
 					onChange={onNameChange}
 					onSubmit={onSubmit}
@@ -39,16 +43,30 @@ export function QueryForm({
 			</div>
 			<div className="flex gap-3 lg:contents">
 				<div className="flex-1 lg:w-32 lg:flex-none">
-					<label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+					<label
+						htmlFor="dig-type"
+						className="text-xs font-medium text-muted-foreground mb-1.5 block"
+					>
 						Type
 					</label>
-					<RecordTypeSelect value={type} onChange={onTypeChange} />
+					<RecordTypeSelect
+						id="dig-type"
+						value={type}
+						onChange={onTypeChange}
+					/>
 				</div>
 				<div className="flex-1 lg:w-52 lg:flex-none">
-					<label className="text-xs font-medium text-muted-foreground mb-1.5 block">
+					<label
+						htmlFor="dig-server"
+						className="text-xs font-medium text-muted-foreground mb-1.5 block"
+					>
 						Server
 					</label>
-					<DnsServerPicker value={server} onChange={onServerChange} />
+					<DnsServerPicker
+						id="dig-server"
+						value={server}
+						onChange={onServerChange}
+					/>
 				</div>
 			</div>
 			<Button

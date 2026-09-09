@@ -16,17 +16,23 @@ import {
 import { RECORD_TYPES } from "@/lib/record-types";
 
 interface RecordTypeSelectProps {
+	id: string;
 	value: string;
 	onChange: (value: string) => void;
 }
 
-export function RecordTypeSelect({ value, onChange }: RecordTypeSelectProps) {
+export function RecordTypeSelect({
+	id,
+	value,
+	onChange,
+}: RecordTypeSelectProps) {
 	const [open, setOpen] = useState(false);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
 				<button
+					id={id}
 					type="button"
 					className="flex h-12 w-full items-center justify-between border border-input bg-background px-3 font-mono text-sm hover:bg-accent transition-colors duration-150"
 					style={{ borderRadius: "var(--radius)" }}

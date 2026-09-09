@@ -3,7 +3,12 @@ import { createRoot } from "react-dom/client";
 import { DigApp } from "@/components/dig/DigApp";
 import "./styles/global.css";
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+	throw new Error('Root element "#root" not found');
+}
+
+createRoot(rootElement).render(
 	<StrictMode>
 		<main className="min-h-screen">
 			<DigApp />
