@@ -1,43 +1,42 @@
-# Astro Starter Kit: Minimal
+# dig
+
+A clean, fast, browser-based DNS lookup tool — a web UI in the spirit of the `dig` command-line utility.
+
+## Features
+
+- **Many record types** — A, AAAA, CNAME, MX, NS, SOA, TXT, SRV, CAA, HTTPS, DNSSEC types (DS, DNSKEY, RRSIG, NSEC/NSEC3), and more, or any numeric type.
+- **Multiple resolvers** — Cloudflare (default), Google, Quad9, OpenDNS, AdGuard, Mullvad, NextDNS, and others, grouped as public, filtering, privacy, and regional.
+- **Advanced options** — request DNSSEC records and set an EDNS Client Subnet.
+- **Shareable URLs** — each successful query is saved in the URL (`?name=example.com&type=MX&server=google`), so you can bookmark or share a lookup.
+
+## How it works
+
+The app runs entirely in the browser. Lookups are sent as DNS-over-HTTPS JSON requests to a public relay (`https://doh.crypto.sx/dns-query`), which forwards each query to the resolver you selected. You need an internet connection, and the relay and resolver will see the names you look up.
+
+## Running locally
+
+**Prerequisites:** Node.js and [pnpm](https://pnpm.io/).
 
 ```sh
-pnpm create astro@latest -- --template minimal
+# Use the pinned Node version (optional, if you use nvm)
+nvm use
+
+# Install dependencies
+pnpm install
+
+# Start the dev server
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then open <http://localhost:3000>. The port is fixed at 3000, so the dev server won't start if something else is already using that port.
 
-## 🚀 Project Structure
+### Other scripts
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command        | Description                                  |
+| -------------- | -------------------------------------------- |
+| `pnpm build`   | Build a production bundle into `dist/`       |
+| `pnpm preview` | Serve the production build locally           |
+| `pnpm check`   | Lint and check formatting with Biome         |
+| `pnpm format`  | Apply Biome lint fixes and formatting        |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+A VS Code dev container config (`.devcontainer/`) is also included if you'd like a ready-made Node environment.
