@@ -1,0 +1,23 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:26",
+	"runArgs": [
+		"--env-file",
+		"${localEnv:HOME}/.config/devcontainers/github.env"
+	],
+	"features": {
+		"ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "26"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"mounts": [
+		"source=claude-code-config,target=/home/node/.claude,type=volume",
+		"source=~/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly",
+		"source=~/.claude/plugins,target=/home/node/.claude/skills,type=bind,readonly"
+	],
+	"containerEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/node/.claude"
+	},
+	"postCreateCommand": "sudo chown node:node /home/node/.claude && npm install -g pnpm && gh auth setup-git --hostname github.com --force"
+}

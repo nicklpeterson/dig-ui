@@ -6,6 +6,16 @@ export function ThemeToggle() {
 
 	useEffect(() => {
 		setDark(document.documentElement.classList.contains("dark"));
+
+		// Follow the browser's color scheme until the user picks one explicitly.
+		const media = window.matchMedia("(prefers-color-scheme: dark)");
+		function onChange(e: MediaQueryListEvent) {
+			if (localStorage.getItem("theme")) return;
+			setDark(e.matches);
+			document.documentElement.classList.toggle("dark", e.matches);
+		}
+		media.addEventListener("change", onChange);
+		return () => media.removeEventListener("change", onChange);
 	}, []);
 
 	function toggle() {
