@@ -4,6 +4,9 @@
 # build output
 dist/
 
+# wrangler
+.wrangler/
+
 # dependencies
 node_modules/
 
