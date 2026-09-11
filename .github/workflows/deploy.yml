@@ -30,7 +30,9 @@ jobs:
 
       - run: pnpm build
 
-      - run: pnpm exec wrangler deploy --author "Nick Peterson"
+      - run: |
+          pnpm exec wrangler deploy \
+            --message "${{ github.event.head_commit.message }} — by ${{ github.actor }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
