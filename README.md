@@ -40,5 +40,3 @@ Then open <http://localhost:3000>. The port is fixed at 3000, so the dev server 
 | `pnpm preview` | Serve the production build locally           |
 | `pnpm check`   | Lint and check formatting with Biome         |
 | `pnpm format`  | Apply Biome lint fixes and formatting        |
-
-A VS Code dev container config (`.devcontainer/`) is also included if you'd like a ready-made Node environment.
