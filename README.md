@@ -1,5 +1,7 @@
 # dig
 
+https://dig.nickpeterson.me/
+
 A clean, fast, browser-based DNS lookup tool — a web UI in the spirit of the `dig` command-line utility.
 
 ## Features
